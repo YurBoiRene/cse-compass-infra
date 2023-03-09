@@ -2,6 +2,7 @@ import os
 import json
 import random
 import string
+import re
 from datetime import datetime, timedelta
 import boto3
 
@@ -15,10 +16,15 @@ table = db.Table(TOKENS_DB_NAME)
 
 def lambda_handler(event, context):
     if EMAIL_PARAM not in event:
-        return buildError(f'No ${EMAIL_PARAM} parameter provided')
+        return buildError(f'No email parameter provided')
     
-    # TODO check email for name.#@osu.edu
-    email = event['email']
+    email = event['email'].lower()
+    # regex match for osu email
+    match = re.match(r'[a-z]+\.[1-9]\d*@osu\.edu', email)
+    if match == None:
+        return buildError(f'Not a valid OSU email')
+    email = email[match.start():match.end()]
+
     current_time = datetime.now()
     current_timestamp = round(current_time.timestamp())
     
