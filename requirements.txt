@@ -1,0 +1,11 @@
+autopep8==2.0.1
+aws-sam-cli==1.76.0
+aws-xray-sdk==2.11.0
+graphql-core==3.2.3
+jsondiff==2.0.0
+moto==4.1.4
+openapi-spec-validator==0.5.5
+pyparsing==3.0.9
+pytest-cov==4.0.0
+python-jose==3.3.0
+sshpubkeys==3.3.1
