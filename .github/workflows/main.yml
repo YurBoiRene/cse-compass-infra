@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requirements.lock
+          pip install requirements.txt
       - name: Test with pytest
         run: |
           pytest --cov=resources/lambda/src resources/lambda/
